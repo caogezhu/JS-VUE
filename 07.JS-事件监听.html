@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS-事件监听</title>
+</head>
+
+<body>
+
+  <input type="button" id="btn1" value="点我一下试试">
+  <input type="button" id="btn2" value="点我一下试试">
+
+  <script>
+    // 事件监听 - addEventListener() （可以多次绑定同一个事件）
+    document.querySelector('#btn1').addEventListener('click', function () {
+      console.log("我是btn1");
+    })
+    document.querySelector('#btn1').addEventListener('click', function () {
+      console.log("我是btn12");
+    })
+    // let btn1 = document.querySelector('#btn1').addEventListener('click', () => {
+    //   console.log("我是btn1");
+    // })
+
+    // 事件监听-早期写法 - onclick事件 （只能绑定一个事件）
+    document.querySelector('#btn2').onclick = function () {
+      console.log("我是btn2");
+    }
+    document.querySelector('#btn2').onclick = function () {
+      console.log("我是btn22");
+    }
+  </script>
+</body>
+
+</html>

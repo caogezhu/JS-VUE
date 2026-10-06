@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS-自定义形象</title>
+</head>
+
+<body>
+  <script>
+    // //1. 自定义形象
+    // let person = {
+    //   name: "张三",
+    //   age: 18,
+    //   sex: "男",
+    //   sing: function () {
+    //     console.log("我会唱歌");
+    //   }
+    // }
+
+    // let person = {
+    //   name: "张三",
+    //   age: 18,
+    //   sex: "男",
+    //   sing() {
+    //     console.log("我会唱歌");
+    //   }
+    // }
+
+    // let person = {
+    //   name: "张三",
+    //   age: 18,
+    //   sex: "男",
+    //   sing: () => {//注意：在箭头函数中，this关键字并不指向person对象， - 指向的是当前对象的父级 【不推荐】
+    //     console.log("我会唱歌");
+    //   }
+    // }
+    //2. 调用自定义形象
+    // alert(person.name);
+    // person.sing();
+
+    //3. JSON - JS对象标记法
+    let person = {
+      name: "张三",
+      age: 18,
+      sex: "男",
+    }
+    alert(JSON.stringify(person)); // js对象 --> json字符串
+
+    let personJson = '{"name":"张三","age":18,"sex":"男"}'
+    alert(JSON.parse(personJson).name); // json字符串 --> js对象
+  </script>
+</body>
+
+</html>
