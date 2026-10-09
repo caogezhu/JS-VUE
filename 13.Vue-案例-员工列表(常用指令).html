@@ -222,7 +222,7 @@
             <th>姓名</th>
             <th>性别</th>
             <th>头像</th>
-            <th>职位</th>
+            <th>定位</th>
             <th>入场日期</th>
             <th>最后操作时间</th>
             <th>操作</th>
@@ -234,8 +234,23 @@
             <td>{{ e.name }}</td>
             <td>{{ e.gender == 1 ? '男' : '女' }}</td>
             <!-- 插值表达式是不能出现在标签内部的 -->
-            <td><img :src="e.image" alt="{{e.name}}"></td>
-            <td>{{ e.dept }}</td>
+            <td><img :src="e.image" :alt="e.name"></td>
+
+            <!-- v-if：控制元素的显示与隐藏，不频繁切换时使用 -->
+            <td>
+              <span v-if="e.dept == 1">追击大C</span>
+              <span v-else-if="e.dept == 2">记忆舰长</span>
+              <span v-else-if="e.dept == 3">我独自满级！</span>
+              <span v-else>未知</span>
+            </td>
+
+            <!-- v-show：控制元素的显示与隐藏,频繁切换时使用 -->
+            <!-- <td>
+              <span v-show="e.dept == 1">追击大C</span>
+              <span v-show="e.dept == 2">记忆舰长</span>
+              <span v-show="e.dept == 3">我独自满级！</span>
+            </td> -->
+
             <td>{{ e.getDate }}</td>
             <td>{{ e.useDate }}</td>
             <td>
@@ -265,7 +280,7 @@
             name: '飞霄',
             gender: 2,
             image: 'img/飞霄.jpg',
-            dept: '追击大C',
+            dept: '1',
             getDate: '2023-04-26',
             useDate: '2026-05-25 14:30:00',
           },
@@ -274,7 +289,7 @@
             name: '遐蝶',
             gender: 2,
             image: 'img/遐蝶.jpg',
-            dept: '记忆舰长',
+            dept: '2',
             getDate: '2023-07-19',
             useDate: '2026-05-24 09:15:00',
           },
@@ -283,7 +298,7 @@
             name: '银狼LV999',
             gender: 2,
             image: 'img/银狼.jpg',
-            dept: '我独自满级！',
+            dept: '3',
             getDate: '2023-10-11',
             useDate: '2026-05-23 18:45:00',
           }]
