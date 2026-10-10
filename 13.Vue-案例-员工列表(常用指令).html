@@ -190,27 +190,27 @@
     <!-- 搜索表单区域 -->
     <form class="search-form" action="/search" method="post">
       <label for="name">姓名：</label>
-      <input type="text" id="name" name="name" placeholder="请输入姓名">
+      <input type="text" id="name" name="name" v-model="searchForm.name" placeholder="请输入姓名">
 
       <label for="gender">性别：</label>
-      <select id="gender" name="gender">
+      <select id="gender" name="gender" v-model="searchForm.gender">
         <option value="">请选择</option>
         <option value="男">男</option>
         <option value="女">女</option>
       </select>
 
-      <label for="position">职位：</label>
-      <select id="position" name="position">
+      <label for="position">定位：</label>
+      <select id="position" name="position" v-model="searchForm.position">
         <option value="">请选择</option>
-        <option value="班主任">班主任</option>
+        <option value="">追击大C</option>
         <option value="讲师">讲师</option>
         <option value="学工主管">学工主管</option>
         <option value="教研主管">教研主管</option>
         <option value="咨询师">咨询师</option>
       </select>
 
-      <button type="submit" class="btn-query">查询</button>
-      <button type="reset" class="btn-reset">清空</button>
+      <button type="button" v-on:click="search" class="btn-query">查询</button>
+      <button type="button" @click="clear" class="btn-reset">清空</button>
     </form>
 
     <!-- 表格展示区域 -->
@@ -275,6 +275,11 @@
     createApp({
       data() {
         return {
+          searchForm: {  //封装用户输入的查询条件
+            name: '',
+            gender: '',
+            position: '',
+          },
           emplist: [{
             id: 1,
             name: '飞霄',
@@ -302,6 +307,21 @@
             getDate: '2023-10-11',
             useDate: '2026-05-23 18:45:00',
           }]
+        }
+      },
+      //方法
+      methods: {
+        search() {
+          //将搜索条件，输出到控制台
+          console.log(this.searchForm);
+        },
+        clear() {
+          //清空表单数据
+          this.searchForm = {
+            name: '',
+            gender: '',
+            position: '',
+          }
         }
       }
     }).mount('#content');
